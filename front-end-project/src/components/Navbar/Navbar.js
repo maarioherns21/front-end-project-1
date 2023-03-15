@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Button } from "../Button/Button"
 import "../Navbar/Navbar.css"
@@ -13,14 +13,19 @@ function Navbar() {
 
   const closeMobileMenu = () => setClick(false)
 
-  // This codintion makes it so it will show the button depending on the size
+  // This condition makes it so it will show the button depending on the size
   const showButton = () => {
-    if (window.inner <= 960) {
+    if (window.innerWidth <= 960) {
       setButton(false)
     } else {
       setButton(true)
     }
   }
+
+  // This makes it so everytime it shows it doesn't need to refresh the nav
+  useEffect(() => {
+    showButton()
+  }, [])
 
   window.addEventListener("resize", showButton)
 
@@ -28,7 +33,7 @@ function Navbar() {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo">
+          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             TRVL <i className="fa-solid fa-wand-magic-sparkles"></i>
           </Link>
 
