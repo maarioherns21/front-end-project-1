@@ -1,11 +1,10 @@
 import React from "react"
-import "../Button/Button.css"
+import "./Button.css"
 import { Link } from "react-router-dom"
 
 const STYLES = ["btn--primary", "btn--outline"]
 
 const SIZES = ["btn--medium", "btn--large"]
-
 
 export const Button = ({ children, type, onClick, buttonStyle, buttonSize }) => {
   // These conditions are placed so when we make the 'buttonStyle' in other buttons all we have to do is add the style to make it work in other sections of code
